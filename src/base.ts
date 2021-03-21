@@ -1,4 +1,4 @@
-import {uniqueId} from 'lodash';
+import uniqueId from './uniq';
 
 
 export interface IPromiseCallbacks {
@@ -78,11 +78,7 @@ export abstract class BaseRPC implements IRPC {
         if(method) {
             const func:Function = method;
             try{
-                let response:any = await func(message.params);
-                console.log(response);
-                // if(response && response.then === 'function'){
-                //     response = await response;
-                // }
+                let response:any = await func(...message.params);
                 this.sendResponse(message.id, response,true);
             }catch (err){
                 this.sendResponse(message.id, err, false);

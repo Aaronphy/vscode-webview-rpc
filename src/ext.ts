@@ -12,7 +12,6 @@ export default  class ExtensionRPC extends BaseRPC {
 
     private _init(){
         this.webview.onDidReceiveMessage(message => {
-            console.log(message);
             switch (message.type) {
             case "response":
               this.handleResponse(message);
