@@ -1,6 +1,5 @@
 const idCounter = {}
 
-
 function uniqueId(prefix='$lodash$') {
   if (!idCounter[prefix]) {
     idCounter[prefix] = 0

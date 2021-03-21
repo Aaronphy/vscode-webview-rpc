@@ -78,7 +78,7 @@ export abstract class BaseRPC implements IRPC {
         if(method) {
             const func:Function = method;
             try{
-                let response:any = await func(...message.params);
+                let response:any = await func(...(message.params||[]));
                 this.sendResponse(message.id, response,true);
             }catch (err){
                 this.sendResponse(message.id, err, false);
